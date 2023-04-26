@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright the State of the Netherlands
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see http://www.gnu.org/licenses/.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>nl.aerius</groupId>
+  <artifactId>aerius-root-pom</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>aerius-root-pom</name>
+  <description>Root parent pom providing common configuration for maven based projects within AERIUS</description>
+
+  <properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <aerius-tools.version>1.2.0</aerius-tools.version>
+    <dependency-check-maven.version>8.2.1</dependency-check-maven.version>
+    <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+    <license-maven-plugin.version>4.2</license-maven-plugin.version>
+    <maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
+    <openapi-generator-maven-plugin.version>6.5.0</openapi-generator-maven-plugin.version>
+    <spring-boot.version>3.0.6</spring-boot.version>
+    <swagger-parser.version>2.1.13</swagger-parser.version>
+    <validation-api.version>2.0.1.Final</validation-api.version>
+    <versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>GNU Affero General Public License</name>
+      <url>http://www.gnu.org/licenses/agpl-3.0.txt</url>
+    </license>
+  </licenses>
+
+  <distributionManagement>
+    <repository>
+      <id>aerius-nexus</id>
+      <url>https://nexus.aerius.nl/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>aerius-nexus</id>
+      <url>https://nexus.aerius.nl/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <!-- 
+    Unless we somehow get this pom in maven central repository, 
+    the repositories will have to be repeated in projects using this generic root pom.
+   -->
+  <repositories>
+    <repository>
+      <id>aerius-nexus-public</id>
+      <name>AERIUS Nexus repository</name>
+      <url>https://nexus.aerius.nl/repository/maven-public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>aerius-nexus-public</id>
+      <name>AERIUS Nexus Repository</name>
+      <url>https://nexus.aerius.nl/repository/maven-public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.swagger.parser.v3</groupId>
+        <artifactId>swagger-parser</artifactId>
+        <version>${swagger-parser.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openapitools</groupId>
+        <artifactId>jackson-databind-nullable</artifactId>
+        <version>${jackson-databind-nullable.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>${validation-api.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${license-maven-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven-enforcer-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.openapitools</groupId>
+          <artifactId>openapi-generator-maven-plugin</artifactId>
+          <version>${openapi-generator-maven-plugin.version}</version>
+        </plugin>
+      
+        <!--
+          The versions-maven-plugin plugin.
+          Can be used with mvn versions:display-dependency-updates or versions:display-plugin-updates to check for possible updates.
+          Can also be used to automatically update versions, but use with care.
+        -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versions-maven-plugin.version}</version>
+          <configuration>
+            <rulesUri>classpath:///versions_maven_plugin_rules.xml</rulesUri>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>nl.aerius</groupId>
+              <artifactId>tools</artifactId>
+              <version>${aerius-tools.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <!-- 
+          The dependency-check-maven plugin.
+          Used in sonar profile to generate reports about known vulnerable components.
+        -->
+        <plugin>
+          <groupId>org.owasp</groupId>
+          <artifactId>dependency-check-maven</artifactId>
+          <version>${dependency-check-maven.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <configuration>
+          <licenseSets>
+            <licenseSet>
+              <header>license-header.txt</header>
+
+              <includes>
+                <include>**/*.java</include>
+                <include>**/.swagger-codegen-ignore</include>
+                <include>**/*.yaml</include>
+                <include>**/*.cl</include>
+                <include>**/pom.xml</include>
+                <include>**/web.xml</include>
+              </includes>
+            </licenseSet>
+          </licenseSets>
+          <mapping>
+            <java>SLASHSTAR_STYLE</java>
+            <swagger-codegen-ignore>SCRIPT_STYLE</swagger-codegen-ignore>
+            <cl>SLASHSTAR_STYLE</cl>
+          </mapping>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>nl.aerius</groupId>
+            <artifactId>tools</artifactId>
+            <version>${aerius-tools.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.6.3,)</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>dependency-check</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.owasp</groupId>
+            <artifactId>dependency-check-maven</artifactId>
+            <inherited>false</inherited>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>aggregate</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <!-- If we ever want to fail on high CVSS scores, this is an example how -->
+              <!-- <failBuildOnCVSS>8</failBuildOnCVSS> -->
+              <!-- Generate all report formats -->
+              <format>ALL</format>
+              <!-- Don't use Nexus Analyzer -->
+              <centralAnalyzerEnabled>false</centralAnalyzerEnabled>
+              <!-- Am I the latest version? -->
+              <versionCheckEnabled>true</versionCheckEnabled>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
