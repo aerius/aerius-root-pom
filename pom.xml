@@ -285,6 +285,9 @@
                 <include>**/pom.xml</include>
                 <include>**/web.xml</include>
               </includes>
+              <excludes>
+                <exclude>**/generated/**</exclude>
+              </excludes>
             </licenseSet>
           </licenseSets>
           <mapping>
