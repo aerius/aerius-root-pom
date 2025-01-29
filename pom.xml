@@ -34,7 +34,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    
+
     <!-- Expected to be defined in projects using this root pom: sonar.projectKey -->
     <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
     <sonar.organization>aerius</sonar.organization>
@@ -59,6 +59,9 @@
     <swagger-annotations.version>2.2.28</swagger-annotations.version>
     <jakarta-validation-api.version>3.1.0</jakarta-validation-api.version>
     <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
+    <!-- Match flyway version in spring boot -->
+    <flyway-maven-plugin.version>10.20.1</flyway-maven-plugin.version>
+    <jooq-codegen-maven.version>3.19.18</jooq-codegen-maven.version>
   </properties>
 
   <licenses>
@@ -188,7 +191,7 @@
             </execution>
           </executions>
         </plugin>
-        
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -197,13 +200,13 @@
             <parameters>true</parameters>
           </configuration>
         </plugin>
-        
+
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
           <version>${build-helper-maven-plugin.version}</version>
         </plugin>
-        
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
@@ -234,7 +237,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven-surefire-plugin.version}</version>
         </plugin>
-        
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
@@ -272,7 +275,7 @@
           <artifactId>openapi-generator-maven-plugin</artifactId>
           <version>${openapi-generator-maven-plugin.version}</version>
         </plugin>
-      
+
         <!--
           The versions-maven-plugin plugin.
           Can be used with mvn versions:display-dependency-updates or versions:display-plugin-updates to check for possible updates.
@@ -301,6 +304,27 @@
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
           <version>${dependency-check-maven.version}</version>
+        </plugin>
+
+        <!-- 
+          The flyway-maven-plugin and jooq-codegen-maven plugins can be used to automatically (re)generate JOOQ code.
+        -->
+        <plugin>
+          <groupId>org.flywaydb</groupId>
+          <artifactId>flyway-maven-plugin</artifactId>
+          <version>${flyway-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jooq</groupId>
+          <artifactId>jooq-codegen-maven</artifactId>
+          <version>${jooq-codegen-maven.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.jooq</groupId>
+              <artifactId>jooq-meta-extensions</artifactId>
+              <version>${jooq-codegen-maven.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
