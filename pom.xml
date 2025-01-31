@@ -327,11 +327,33 @@
         <!--
           The dependency-check-maven plugin.
           Used in sonar profile to generate reports about known vulnerable components.
+          Best way to use in a multi-module is within a specific profile in the parent pom with <inherited>false</inherited>
         -->
         <plugin>
           <groupId>org.owasp</groupId>
           <artifactId>dependency-check-maven</artifactId>
           <version>${dependency-check-maven.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>aggregate</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <!-- If we ever want to fail on high CVSS scores, this is an example how -->
+            <!-- <failBuildOnCVSS>8</failBuildOnCVSS> -->
+            <!-- Generate all report formats -->
+            <format>ALL</format>
+            <!-- Don't use Nexus Analyzer -->
+            <centralAnalyzerEnabled>false</centralAnalyzerEnabled>
+            <!-- Am I the latest version? -->
+            <versionCheckEnabled>true</versionCheckEnabled>
+            <!-- The plugin can spot at least one 'exe' or 'dll', but we dont want to scan those (also results in errors) -->
+            <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+            <!-- Don't fail on error (NVD CVE download isn't the most stable) -->
+            <failOnError>false</failOnError>
+          </configuration>
         </plugin>
 
         <!--
@@ -463,37 +485,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>dependency-check</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.owasp</groupId>
-            <artifactId>dependency-check-maven</artifactId>
-            <inherited>false</inherited>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>aggregate</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <!-- If we ever want to fail on high CVSS scores, this is an example how -->
-              <!-- <failBuildOnCVSS>8</failBuildOnCVSS> -->
-              <!-- Generate all report formats -->
-              <format>ALL</format>
-              <!-- Don't use Nexus Analyzer -->
-              <centralAnalyzerEnabled>false</centralAnalyzerEnabled>
-              <!-- Am I the latest version? -->
-              <versionCheckEnabled>true</versionCheckEnabled>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
 </project>
