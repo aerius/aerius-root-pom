@@ -68,6 +68,7 @@
     <!-- Match flyway version in spring boot -->
     <flyway-maven-plugin.version>10.20.1</flyway-maven-plugin.version>
     <jooq-codegen-maven.version>3.19.18</jooq-codegen-maven.version>
+    <git-commit-id-maven-plugin.version>9.0.1</git-commit-id-maven-plugin.version>
 
     <!-- Required for mockito as java-agent -->
     <argLine/>
@@ -273,6 +274,24 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>io.github.git-commit-id</groupId>
+          <artifactId>git-commit-id-maven-plugin</artifactId>
+          <version>${git-commit-id-maven-plugin.version}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>revision</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <verbose>true</verbose>
+            <generateGitPropertiesFile>true</generateGitPropertiesFile>
+            <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+          </configuration>
         </plugin>
 
         <plugin>
