@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Check out github-actions repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: aerius/github-actions
           path: aerius-github-actions
