@@ -42,7 +42,7 @@
     <buildnumber-maven-plugin.version>3.2.1</buildnumber-maven-plugin.version>
     <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
     <dependency-check-maven.version>12.1.0</dependency-check-maven.version>
-    <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+    <jackson-databind-nullable.version>0.2.8</jackson-databind-nullable.version>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <license-maven-plugin.version>4.6</license-maven-plugin.version>
     <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
