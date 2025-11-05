@@ -10,6 +10,10 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # Ignore jooq versions. These are codegen related, and have to align to the version used in spring-boot.
+      - dependency-name: "org.jooq:*"
+
 
   - package-ecosystem: "github-actions"
     directory: "/"

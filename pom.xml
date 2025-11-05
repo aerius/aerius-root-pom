@@ -67,7 +67,7 @@
     <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
     <!-- Match flyway version in spring boot -->
     <flyway-maven-plugin.version>10.20.1</flyway-maven-plugin.version>
-    <jooq-codegen-maven.version>3.20.8</jooq-codegen-maven.version>
+    <jooq-codegen-maven.version>3.19.27</jooq-codegen-maven.version>
     <git-commit-id-maven-plugin.version>9.0.2</git-commit-id-maven-plugin.version>
 
     <!-- Required for mockito as java-agent -->
