@@ -67,6 +67,8 @@
     <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
     <!-- Match flyway version in spring boot -->
     <flyway-maven-plugin.version>10.20.1</flyway-maven-plugin.version>
+    <!-- Match mockito version in spring boot -->
+    <mockito.version>5.17.0</mockito.version>
     <jooq-codegen-maven.version>3.19.27</jooq-codegen-maven.version>
     <git-commit-id-maven-plugin.version>9.0.2</git-commit-id-maven-plugin.version>
 
@@ -299,7 +301,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven-surefire-plugin.version}</version>
           <configuration>
-            <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+            <argLine>@{argLine} -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar</argLine>
           </configuration>
         </plugin>
 
@@ -308,7 +310,7 @@
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>${maven-failsafe-plugin.version}</version>
           <configuration>
-            <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+            <argLine>@{argLine} -javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar</argLine>
           </configuration>
         </plugin>
 
@@ -491,22 +493,6 @@
     </pluginManagement>
 
     <plugins>
-      <!--
-        Configure dependency plugin to add a property to the artifact file for each dependency.
-        Required to use mockito as a java agent.
-      -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>properties</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
