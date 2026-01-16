@@ -70,7 +70,7 @@
     <!-- Match mockito version in spring boot -->
     <mockito.version>5.17.0</mockito.version>
     <!-- Match jooq version in spring boot -->
-    <jooq-codegen-maven.version>3.19.29</jooq-codegen-maven.version>
+    <jooq-codegen-maven.version>3.20.10</jooq-codegen-maven.version>
     <git-commit-id-maven-plugin.version>9.0.2</git-commit-id-maven-plugin.version>
 
     <!-- Required for mockito as java-agent -->
