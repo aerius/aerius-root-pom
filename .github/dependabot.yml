@@ -11,8 +11,9 @@ updates:
           - "minor"
           - "patch"
     ignore:
-      # Ignore jooq versions. These are codegen related, and have to align to the version used in spring-boot.
-      - dependency-name: "org.jooq:*"
+      # Ignore jooq and flyway plugin versions. These are codegen related, and have to align to the version used in spring-boot.
+      - dependency-name: "org.jooq:jooq-codegen-maven"
+      - dependency-name: "org.flywaydb:flyway-maven-plugin"
 
 
   - package-ecosystem: "github-actions"

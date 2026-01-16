@@ -61,15 +61,16 @@
     <maven-war-plugin.version>3.5.1</maven-war-plugin.version>
     <openapi-generator-maven-plugin.version>7.18.0</openapi-generator-maven-plugin.version>
     <spotless-maven-plugin.version>3.1.0</spotless-maven-plugin.version>
-    <spring-boot.version>3.5.7</spring-boot.version>
+    <spring-boot.version>3.5.9</spring-boot.version>
     <swagger-annotations.version>2.2.41</swagger-annotations.version>
     <jakarta-validation-api.version>3.1.1</jakarta-validation-api.version>
     <versions-maven-plugin.version>2.20.1</versions-maven-plugin.version>
     <!-- Match flyway version in spring boot -->
-    <flyway-maven-plugin.version>10.20.1</flyway-maven-plugin.version>
+    <flyway-maven-plugin.version>11.7.2</flyway-maven-plugin.version>
     <!-- Match mockito version in spring boot -->
     <mockito.version>5.17.0</mockito.version>
-    <jooq-codegen-maven.version>3.19.27</jooq-codegen-maven.version>
+    <!-- Match jooq version in spring boot -->
+    <jooq-codegen-maven.version>3.19.29</jooq-codegen-maven.version>
     <git-commit-id-maven-plugin.version>9.0.2</git-commit-id-maven-plugin.version>
 
     <!-- Required for mockito as java-agent -->
