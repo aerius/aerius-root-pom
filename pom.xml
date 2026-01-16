@@ -66,7 +66,7 @@
     <jakarta-validation-api.version>3.1.1</jakarta-validation-api.version>
     <versions-maven-plugin.version>2.20.1</versions-maven-plugin.version>
     <!-- Match flyway version in spring boot -->
-    <flyway-maven-plugin.version>10.20.1</flyway-maven-plugin.version>
+    <flyway-maven-plugin.version>11.20.1</flyway-maven-plugin.version>
     <!-- Match mockito version in spring boot -->
     <mockito.version>5.17.0</mockito.version>
     <jooq-codegen-maven.version>3.19.27</jooq-codegen-maven.version>
