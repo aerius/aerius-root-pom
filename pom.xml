@@ -33,6 +33,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+    <!-- GWT compiler version, shared by aerius GWT frontends (gwt-client-common, calculator) -->
+    <org.gwtproject.version>2.13.1</org.gwtproject.version>
+
     <!-- Expected to be defined in projects using this root pom: sonar.projectKey -->
     <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
     <sonar.organization>aerius</sonar.organization>
