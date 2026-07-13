@@ -66,11 +66,11 @@
     <jakarta-validation-api.version>3.1.1</jakarta-validation-api.version>
     <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
     <!-- Match flyway version in spring boot -->
-    <flyway-maven-plugin.version>11.14.1</flyway-maven-plugin.version>
+    <flyway-maven-plugin.version>12.4.0</flyway-maven-plugin.version>
     <!-- Match mockito version in spring boot -->
-    <mockito.version>5.20.0</mockito.version>
+    <mockito.version>5.23.0</mockito.version>
     <!-- Match jooq version in spring boot -->
-    <jooq-codegen-maven.version>3.19.31</jooq-codegen-maven.version>
+    <jooq-codegen-maven.version>3.21.5</jooq-codegen-maven.version>
     <git-commit-id-maven-plugin.version>9.0.2</git-commit-id-maven-plugin.version>
 
     <!-- Required for mockito as java-agent -->
