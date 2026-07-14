@@ -33,6 +33,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+    <org.gwtproject.version>2.13.1</org.gwtproject.version>
+    <gwt.java.version>17</gwt.java.version>
+    <gwt-maven-plugin.version>1.1.0</gwt-maven-plugin.version>
+
     <!-- Expected to be defined in projects using this root pom: sonar.projectKey -->
     <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
     <sonar.organization>aerius</sonar.organization>
