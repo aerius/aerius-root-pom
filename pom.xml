@@ -49,7 +49,7 @@
     <exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
     <jackson-databind-nullable.version>0.2.10</jackson-databind-nullable.version>
     <jacoco-maven-plugin.version>0.8.15</jacoco-maven-plugin.version>
-    <license-maven-plugin.version>5.0.0</license-maven-plugin.version>
+    <license-maven-plugin.version>5.1.1</license-maven-plugin.version>
     <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
     <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
@@ -58,13 +58,13 @@
     <maven-failsafe-plugin.version>3.5.6</maven-failsafe-plugin.version>
     <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
     <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
-    <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
+    <maven-jar-plugin.version>3.5.1</maven-jar-plugin.version>
     <maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
     <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
     <maven-shade-plugin.version>3.6.2</maven-shade-plugin.version>
     <maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
     <maven-war-plugin.version>3.5.1</maven-war-plugin.version>
-    <openapi-generator-maven-plugin.version>7.23.0</openapi-generator-maven-plugin.version>
+    <openapi-generator-maven-plugin.version>7.24.0</openapi-generator-maven-plugin.version>
     <spotless-maven-plugin.version>3.8.0</spotless-maven-plugin.version>
     <spring-boot.version>4.1.0</spring-boot.version>
     <swagger-annotations.version>2.2.52</swagger-annotations.version>
